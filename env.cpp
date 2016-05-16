@@ -1,17 +1,17 @@
 #include "env.h"
 
 Env::Env(const string& userName) : userName(userName) {
-  fsbDef = new FileStrBridge("vocabulary/def.dat");
-  fsbSent = new FileStrBridge("user/" + userName + "/sentences.dat");
-  fsbProg = new FileStrBridge("user/" + userName + "/progress.dat");
+  fsbDef = new FileStrBridge("./vocabulary/def.dat");
+  fsbSent = new FileStrBridge("./user/" + userName + "/sentences.dat");
+  fsbProg = new FileStrBridge("./user/" + userName + "/progress.dat");
   
-  string staName = "user/" + userName + "/stats.dat";
+  string staName = "./user/" + userName + "/stats.dat";
   fsbSta = new FileStrBridge(staName);
 
   FileStrBridge* fsbVoc;
   
   for (int i = 0;; ++i) {
-    string vocName = "user/" + userName + "/" + str::intToStr(i) + ".dat"; 
+    string vocName = "./user/" + userName + "/" + str::intToStr(i) + ".dat"; 
     ifstream ifs(vocName.c_str());
     if (!ifs) break;
     fsbVoc = new FileStrBridge(vocName);
@@ -22,13 +22,13 @@ Env::Env(const string& userName) : userName(userName) {
     statList.push_back(sta);
   }
 
-  fsbMast = new FileStrBridge("user/" + userName + "/mastered.dat");
+  fsbMast = new FileStrBridge("./user/" + userName + "/mastered.dat");
   masteredVoc = new SimpleInfo(fsbMast);
   
-  fsbHist = new FileStrBridge("user/" + userName + "/history.dat");
+  fsbHist = new FileStrBridge("./user/" + userName + "/history.dat");
   history = new SimpleInfo(fsbHist);
   
-  fsbBasic = new FileStrBridge("user/" + userName + "/basic.dat");
+  fsbBasic = new FileStrBridge("./user/" + userName + "/basic.dat");
   basic = new Basic(fsbBasic);
 }
 

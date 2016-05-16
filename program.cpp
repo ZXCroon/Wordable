@@ -31,7 +31,7 @@ void Program::login() {
   cout << "  ";
   userName = str::readSent(cin);
 
-  FileStrBridge* fsb = new FileStrBridge("user/userlist.dat");
+  FileStrBridge* fsb = new FileStrBridge("./user/userlist.dat");
   SimpleInfo* userList = new SimpleInfo(fsb);
   if (userList->search(userName) == -1) {
     userList->add(userName);
