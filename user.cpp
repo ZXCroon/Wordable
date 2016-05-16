@@ -7,7 +7,7 @@ void NewUser::create() {
   
   //TODO: create directory
   
-  string prefix = "user/" + userName + "/";
+  string prefix = "./user/" + userName + "/";
   ofstream ofs;
   
   ofs.open((prefix + "basic.dat").c_str());
