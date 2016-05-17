@@ -74,6 +74,7 @@ string LearnOneWord::getWord() {
 
 void LearnOneWord::ask() {
   word = sstra->next(diffi);
+  cout << " @@@@diffi: " << diffi << endl;
   fstra->setWord(word);
   cout << fstra->display();
 }

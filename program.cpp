@@ -11,9 +11,10 @@ void Program::show() {
   login();
   for (;;) {
     //TODO
-    RandomSelection* rs = new RandomSelection(env);
+    //RandomSelection* rs = new RandomSelection(env);
+    SmartSelection* ss = new SmartSelection(env);
     RemOrNotForm* ronf = new RemOrNotForm();
-    MainInterface mi(env, rs, ronf);
+    MainInterface mi(env, ss, ronf);
     mi.work();
     if (mi.toQuit()) {
       break;

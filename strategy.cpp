@@ -1,6 +1,7 @@
 #include "strategy.h"
 
 SelectStrategy::SelectStrategy(Env* env) : env(env), diffi(0) {
+  srand(time(0));
 }
 
 string SelectStrategy::next(int& difficulty) {
@@ -67,7 +68,6 @@ RandomSelection::RandomSelection(Env* env) : SelectStrategy(env) {
 }
 
 int RandomSelection::chooseDifficulty() {
-  srand(time(0));
   return rand() % DIFFI_NUM;
 }
 

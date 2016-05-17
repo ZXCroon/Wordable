@@ -90,11 +90,11 @@ void Env::calcLevel() {
       ratio = 0.5;
     }
     else {
-      (double)statList[i]->getKnown() / statList[i]->getTotal();
+      ratio = (double)statList[i]->getKnown() / statList[i]->getTotal();
     }
     if (ratio > 0.9) {
       basic->setLevel((i + 1) * (LEVEL_MAX / DIFFI_NUM)
-                      + (LEVEL_MAX / DIFFI_NUM) * ratio * 0.5);
+                      + (LEVEL_MAX / DIFFI_NUM) * ratio * 0.8);
       if (basic->getLevel() > LEVEL_MAX) {
         basic->setLevel(LEVEL_MAX);
       }

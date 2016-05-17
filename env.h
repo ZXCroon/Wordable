@@ -2,6 +2,8 @@
 #define ENV_H
 
 #include <fstream>
+#include <cstdlib>
+#include <ctime>
 #include "util.h"
 #include "info.h"
 #include "def.h"
