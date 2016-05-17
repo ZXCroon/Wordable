@@ -148,7 +148,11 @@ void ComplexInfo::construct() {
       return;
     }
     beg = fsb->getContent().length();
-    fsb->getContent() += "\n*" + itemName + "* {\n\n}\n";
+    char c = fsb->getContent()[fsb->getContent().length() - 1];
+    if (c != '\n' && c != '\r') {
+      fsb->getContent() += '\n';
+    }
+    fsb->getContent() += "*" + itemName + "* {\n\n}\n";
   }
   int pos1 = fsb->getContent().find('{', beg) + 1;
   int pos2 = fsb->getContent().find('}', pos1) - 1;
@@ -173,6 +177,7 @@ void ComplexInfo::destruct() {
     for (; fsb->getContent()[lp] != '*'; --lp);
     for (--lp; fsb->getContent()[lp] != '*'; --lp);
     for (; fsb->getContent()[rp] != '}'; ++rp);
+    for (; rp + 1 < fsb->getContent().length() && fsb->getContent()[rp + 1] <= 32; ++rp);
     fsb->getContent().erase(lp, rp - lp + 1);
   }
 }
