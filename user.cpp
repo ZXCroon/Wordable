@@ -4,14 +4,14 @@ User::User(const string& userName) : userName(userName) {
 }
 
 void User::create() {
-  
-  //TODO: create directory
+
+  makeDir("user/" + userName);
   
   string prefix = "./user/" + userName + "/";
   ofstream ofs;
   
   ofs.open((prefix + "basic.dat").c_str());
-  ofs << "*all* {\n@timestamp@0.\n@level@50.\n}";
+  ofs << "*all* {\n@timestamp@0.\n@level@50.\n@selectstrategy@-1.\n@formstrategy@0.\n}";
   ofs.close();
   ofs.clear();
 

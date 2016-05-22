@@ -39,7 +39,7 @@
 
 //===============For Linux=================
 
-#ifdef _linux_
+#ifdef linux
 
   #include <sys/stat.h>
   #include <sys/types.h>
@@ -65,7 +65,7 @@
     {
       return true;
     }
-    mkdir(dirName, S_IRWXG); 
+    mkdir(dirName, 0777); 
     return dirExists(dirName);
   }
 

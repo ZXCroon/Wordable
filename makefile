@@ -1,5 +1,5 @@
-main: util.o info.o basic.o def.o env.o interaction.o progress.o sentences.o stats.o strategy.o test.o main_interface.o program.o user.o settings.o factory.o
-	g++ -o final util.o info.o basic.o def.o env.o interaction.o progress.o sentences.o stats.o strategy.o test.o user.o main_interface.o program.o settings.o factory.o
+main: util.o info.o basic.o def.o env.o interaction.o progress.o sentences.o stats.o strategy.o test.o main_interface.o program.o user.o settings.o factory.o file_system.o
+	g++ -o final util.o info.o basic.o def.o env.o interaction.o progress.o sentences.o stats.o strategy.o test.o user.o main_interface.o program.o settings.o factory.o file_system.o
 interaction.o: interaction.cpp util.h def.h strategy.h env.h sentences.h
 	g++ -c -g interaction.cpp
 util.o: util.cpp
@@ -34,5 +34,7 @@ settings.o: settings.cpp info.h util.h interaction.h
 	g++ -c -g settings.cpp
 factory.o: factory.cpp env.h strategy.h
 	g++ -c -g factory.cpp
+file_system.o: file_system.cpp
+	g++ -c -g file_system.cpp
 clean:
 	rm *.o

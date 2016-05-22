@@ -4,6 +4,7 @@
 #include <fstream>
 #include "info.h"
 #include "util.h"
+#include "file_system.h"
 
 class User {
 
