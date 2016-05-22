@@ -34,6 +34,19 @@ string str::readSent(istream& is) {
   return res;
 }
 
+bool str::isNumber(const string& s) {
+  string temps = s;
+  if (temps[0] == '-') {
+    temps.erase(0, 1);
+  }
+  for (int i = 0; i < temps.length(); ++i) {
+    if (temps[i] < '0' || temps[i] > '9') {
+      return false;
+    }
+  }
+  return true;
+}
+
 // ---------------------
 
 

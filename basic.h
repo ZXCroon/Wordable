@@ -11,15 +11,20 @@ public:
 
   int getTimestamp();
   int getLevel();
+  int getSelectStrategy();
+  int getFormStrategy();
   void setTimestamp(int ts);
   void setLevel(int le);
+  void setSelectStrategy(int ss);
+  void setFormStrategy(int fs);
+  
 
 protected:
   void transStrToProp(const string& infoStr);
   string transPropToStr();
 
 private:
-  int timestamp, level;
+  int timestamp, level, sstraNum, fstraNum;
   
 };
 

@@ -10,16 +10,30 @@ Program::~Program() {
 void Program::show() {
   login();
   for (;;) {
-    //TODO
-    //RandomSelection* rs = new RandomSelection(env);
-    SmartSelection* ss = new SmartSelection(env);
+    
+    SelectStrategyFactory ssf(env);
+    FormStrategyFactory fsf(env);
+
+    SelectStrategy* ss = ssf.produce(env->basic->getSelectStrategy());
+    FormStrategy* fs = fsf.produce(env->basic->getFormStrategy());
+
+    MainInterface mi(env, ss, fs);
+    
+    /*
+    RandomSelection* rs = new RandomSelection(env);
     RemOrNotForm* ronf = new RemOrNotForm();
-    MainInterface mi(env, ss, ronf);
+    MainInterface mi(env, rs, ronf);
+    */
+    
     mi.work();
     if (mi.toQuit()) {
+      delete ss;
+      delete fs;
       break;
     }
     mi.getNextInter()->work();
+    delete ss;
+    delete fs;
   }
 }
 
@@ -36,7 +50,7 @@ void Program::login() {
   SimpleInfo* userList = new SimpleInfo(fsb);
   if (userList->search(userName) == -1) {
     userList->add(userName);
-    NewUser nu(userName);
+    User nu(userName);
     nu.create();
   }
   delete(userList);

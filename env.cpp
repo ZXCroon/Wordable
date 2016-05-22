@@ -65,6 +65,10 @@ string Env::getUserName() {
   return userName;
 }
 
+void Env::setUserName(const string& newUserName) {
+  userName = newUserName;
+}
+
 void Env::pass(const string& word, int diffi, bool ok) {
   statList[diffi]->setTotal(statList[diffi]->getTotal() + 1);
   Progress prog(fsbProg, word);

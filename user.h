@@ -5,10 +5,10 @@
 #include "info.h"
 #include "util.h"
 
-class NewUser {
+class User {
 
 public:
-  NewUser(const string& userName);
+  User(const string& userName);
   void create();
   
 private:

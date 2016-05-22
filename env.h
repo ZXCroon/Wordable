@@ -20,6 +20,7 @@ public:
 
   void pass(const string& word, int diffi, bool ok);
   string getUserName();
+  void setUserName(const string& newUserName);
   
   FileStrBridge* fsbDef;
   FileStrBridge* fsbSent;

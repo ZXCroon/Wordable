@@ -7,6 +7,7 @@
 #include "env.h"
 #include "strategy.h"
 #include "user.h"
+#include "factory.h"
 
 class Program {
 

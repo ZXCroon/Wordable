@@ -109,13 +109,5 @@ public:
   
 };
 
-class Settings : public Interaction {
-
-public:
-  Settings(Env* env);
-  void work();
-  
-};
-
 
 #endif

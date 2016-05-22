@@ -3,6 +3,7 @@
 
 #include "interaction.h"
 #include "test.h"
+#include "settings.h"
 
 
 class MainInterface : public Interaction {

@@ -74,7 +74,7 @@ string LearnOneWord::getWord() {
 
 void LearnOneWord::ask() {
   word = sstra->next(diffi);
-  cout << " @@@@diffi: " << diffi << endl;
+  //cout << " @@@@diffi: " << diffi << endl;
   fstra->setWord(word);
   cout << fstra->display();
 }
@@ -252,12 +252,3 @@ void Count::work() {
   cout << " " << cnt << endl << endl;
 }
 
-
-// -----------------
-
-
-Settings::Settings(Env* env) : Interaction(env) {
-}
-
-void Settings::work() {
-}

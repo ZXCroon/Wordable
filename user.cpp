@@ -1,9 +1,9 @@
 #include "user.h"
 
-NewUser::NewUser(const string& userName) : userName(userName) {
+User::User(const string& userName) : userName(userName) {
 }
 
-void NewUser::create() {
+void User::create() {
   
   //TODO: create directory
   

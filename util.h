@@ -33,6 +33,7 @@ namespace str {
   string intToStr(int n);
   int strToInt(const string& s);
   string readSent(istream& is);
+  bool isNumber(const string& s);
 }
 
 void sendStr(ostream& os, const string& S);
