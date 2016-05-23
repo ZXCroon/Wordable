@@ -65,7 +65,8 @@
     {
       return true;
     }
-    mkdir(dirName, 0777); 
+    
+    mkdir(dirName, 0777);
     return dirExists(dirName);
   }
 
@@ -75,17 +76,33 @@
 
 //=================For Mac OS===================
 
-#ifdef _APPLE_
+#ifdef __APPLE__
 
-  bool dirExists(char* dirName)
-  {
+#include <sys/stat.h>
+#include <unistd.h>
 
-  }
+bool dirExists(char* dirName)
+{
+    struct stat fileStat;
+    if ((stat(dirName, &fileStat) == 0) && S_ISDIR(fileStat.st_mode))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 
-  bool makeDir(char* dirName)
-  {
-
-  }
+bool makeDir(char* dirName)
+{
+    if (dirExists(dirName))
+    {
+        return true;
+    }
+    mkdir(dirName,0777);
+    return dirExists(dirName);
+}
 
 #endif
 
