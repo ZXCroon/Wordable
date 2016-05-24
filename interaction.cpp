@@ -5,10 +5,6 @@ OneInteraction::OneInteraction(Env* env) : env(env) {
 }
 
 void OneInteraction::show() {
-  /*
-  cout << env << endl;
-  cout << env->statList.size() << endl;
-  */
   ask();
   getResponse();
   while (!isLegal()) {

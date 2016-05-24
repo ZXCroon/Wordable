@@ -44,7 +44,7 @@ int gap(int t);
 
 const int DIFFI_NUM = 5;
 const int LEVEL_MAX = 100;
-const int NEED_TIME = 2;
+const int NEED_TIME = 5;
 const int INF = 100000000;
 const int OPTION_NUM = 4;
 
