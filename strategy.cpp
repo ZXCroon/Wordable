@@ -17,6 +17,9 @@ string SelectStrategy::next(int& difficulty) {
 }
 
 
+FormStrategy::FormStrategy(Env* env) : env(env) {
+}
+
 void FormStrategy::setWord(const string& word) {
   this->word = word;
   str::clearEnds(this->word);
@@ -72,7 +75,11 @@ int RandomSelection::chooseDifficulty() {
 }
 
 
+// -----------------------------
 
+
+RemOrNotForm::RemOrNotForm(Env* env) : FormStrategy(env) {
+}
 
 string RemOrNotForm::display() {
   string res = "\n ";
@@ -87,6 +94,13 @@ string RemOrNotForm::display() {
   }
   res += " \n\n";
   res += " Remember or not? [y/n]:\n ";
+  return res;
+}
+
+string RemOrNotForm::reDisplay() {
+  string res = "";
+  Def def(env->fsbDef, word);
+  def.print(res);
   return res;
 }
 
@@ -105,4 +119,62 @@ void RemOrNotForm::rcvResponse(const string& resp) {
   }
   legal = false;
   ok = false;
+}
+
+
+SupplementForm::SupplementForm(Env* env) : FormStrategy(env) {
+}
+
+string SupplementForm::display() {
+  string res = "\n ";
+  for (int i = 1; i <= word.length() + 2; ++i) {
+    res += "-";
+  }
+  res += " \n| ";
+  res += processWord();
+  res += " |\n ";
+  for (int i = 1; i <= word.length() + 2; ++i) {
+    res += "-";
+  }
+  res += "\n";
+  Def def(env->fsbDef, word);
+  def.print(res);
+  res += " ";
+  return res;
+}
+
+string SupplementForm::reDisplay() {
+  string res = " ";
+  if (ok) {
+    res += "√";
+  }
+  else {
+    res += "×";
+  }
+  res += " " + word + "\n\n";
+  return res;
+}
+
+void SupplementForm::rcvResponse(const string& resp) {
+  string s = resp;
+  str::clearEnds(s);
+  legal = true;
+  ok = (s == word);
+}
+
+string SupplementForm::processWord() {
+  string res = word;
+  srand(time(0));
+  int len = word.length();
+  int blank = (len - 1) / 2;
+  for (int i = 1; i <= blank; ++i) {
+    for (;;) {
+      int now = rand() % (len - 1) + 1;
+      if (res[now] != '_') {
+        res[now] = '_';
+        break;
+      }
+    }
+  }
+  return res;
 }

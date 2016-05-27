@@ -26,7 +26,9 @@ protected:
 class FormStrategy {
 
 public:
+  FormStrategy(Env* env);
   virtual string display() = 0;
+  virtual string reDisplay() = 0;
   virtual void rcvResponse(const string& resp) = 0;
 
   void setWord(const string& word);
@@ -34,6 +36,7 @@ public:
   bool isOK();
 
 protected:
+  Env* env;
   string word;
   bool legal, ok;
   
@@ -89,8 +92,25 @@ protected:
 class RemOrNotForm : public FormStrategy {
 
 public:
+  RemOrNotForm(Env* env);
+  
   string display();
+  string reDisplay();
   void rcvResponse(const string& resp);
+  
+};
+
+class SupplementForm : public FormStrategy {
+
+public:
+  SupplementForm(Env* env);
+  
+  string display();
+  string reDisplay();
+  void rcvResponse(const string& resp);
+
+private:
+  string processWord();
   
 };
 

@@ -29,7 +29,11 @@ FormStrategy* FormStrategyFactory::produce(int n) {
   switch (n) {
 
   case 0:
-    return new RemOrNotForm;
+    return new RemOrNotForm(env);
+    
+  case 1:
+    return new SupplementForm(env);
+    
   default:
     return NULL;
     

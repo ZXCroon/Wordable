@@ -5,6 +5,7 @@ FormSetting::FormSetting(Env* env) : Interaction(env) {
 
 void FormSetting::work() {
   cout << "  0. \"Remember or not\"" << endl;
+  cout << "  1. \"Supplement\"" << endl;
   cout << " ";
 
   int num;
@@ -13,7 +14,7 @@ void FormSetting::work() {
     if (str::isNumber(res)) {
       num = str::strToInt(res);
       // TODO:...
-      if (num == 0) {
+      if (num == 0 || num == 1) {
         break;
       }
     }

@@ -91,8 +91,7 @@ bool LearnOneWord::isLegal() {
 
 void LearnOneWord::process() {
   env->pass(word, diffi, fstra->isOK());
-  Def def(env->fsbDef, word);
-  def.print(cout);
+  cout << fstra->reDisplay();
 }
 
 
